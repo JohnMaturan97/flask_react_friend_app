@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "postgresql://psqldba:g5fr0nich6CaBo9h@apsql-apm1234567-prdcl01.cti2yaq020bk.us-east-1.rds.amazonaws.com:5432/friends"
+    "postgresql://psqldba:g5fr0nich6CaBo9h@aapsql-personal-projects-prdcl97.c9o440ousbsn.us-east-1.rds.amazonaws.com:5432/friends"
 )
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
