@@ -3,14 +3,18 @@ from flask import Flask, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "postgresql://psqldba:g5fr0nich6CaBo9h@aapsql-personal-projects-prdcl97.c9o440ousbsn.us-east-1.rds.amazonaws.com:5432/friends"
-)
+database_uri = os.getenv('DATABASE_URL')
+if not database_uri:
+    raise RuntimeError("DATABASE_URL is not set in the environment")
 
+app.config["SQLALCHEMY_DATABASE_URI"] = database_uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
